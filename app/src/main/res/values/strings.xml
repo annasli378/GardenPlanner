@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GardenCalendar</string>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="next"><![CDATA[->]]></string>
+</resources>
