@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>  {
 
-    private LayoutInflater layoutInflater;
-    private List<Note> notesList;
+    private final LayoutInflater layoutInflater;
+    private final List<Note> notesList;
 
-    Adapter(Context context, List<Note> notes){
+    NoteAdapter(Context context, List<Note> notes){
         this.layoutInflater = LayoutInflater.from(context);
         this.notesList = notes;
     }
@@ -35,7 +35,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         String  title    = notesList.get(i).getTitle();
         String  date     = notesList.get(i).getDate();
         String  time     = notesList.get(i).getTime();
-        long    id       = notesList.get(i).getID();
+        long    ID       = notesList.get(i).getID();
         Log.d("date on ", "Date on: "+date);
 
         viewHolder.nTitle.setText(title);
