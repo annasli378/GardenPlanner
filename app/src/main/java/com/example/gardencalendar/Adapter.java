@@ -13,36 +13,36 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>  {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
     private final LayoutInflater layoutInflater;
     private final List<Note> notesList;
 
-    NoteAdapter(Context context, List<Note> notes){
+    Adapter(Context context, List<Note> notesList){
         this.layoutInflater = LayoutInflater.from(context);
-        this.notesList = notes;
+        this.notesList = notesList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = layoutInflater.inflate(R.layout.custom_list_view,viewGroup,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        // i - position
         String  title    = notesList.get(i).getTitle();
         String  date     = notesList.get(i).getDate();
         String  time     = notesList.get(i).getTime();
         long    ID       = notesList.get(i).getID();
-        Log.d("date on ", "Date on: "+date);
-
+        //Log.d("date on ", "Date on: "+date);
         viewHolder.nTitle.setText(title);
         viewHolder.nDate.setText(date);
         viewHolder.nTime.setText(time);
-        viewHolder.nID.setText(String.valueOf(notesList.get(i).getID()));
-
+        //viewHolder.nID.setText(String.valueOf(notesList.get(i).getID()));
+        viewHolder.nID.setText(String.valueOf(ID));
     }
 
     @Override

@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
             startActivity( intentCalendar, null )
         }
 
-        val btnSettings = findViewById<Button>(R.id.buttonSettings)
-        val intentSettings = Intent(this, Settings::class.java)
-        btnSettings.setOnClickListener{
-            startActivity( intentSettings, null )
+        val btnNotes = findViewById<Button>(R.id.buttonSettings)
+        val intentSNotes = Intent(this, Notes::class.java)
+        btnNotes.setOnClickListener{
+            startActivity( intentSNotes, null )
         }
 
         val btnAbout = findViewById<Button>(R.id.buttonAbout)
