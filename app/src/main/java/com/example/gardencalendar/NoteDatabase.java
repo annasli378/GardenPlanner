@@ -67,18 +67,22 @@ public class NoteDatabase extends SQLiteOpenHelper {
         // select * from table where id == <ID>
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = new String[] {KEY_ID,KEY_TITLE,KEY_CONTENT,KEY_DATE,KEY_TIME};
-        Cursor cursor=  db.query(TABLE_NAME,columns,KEY_ID+"=?",
+        Cursor cursor = db.query(TABLE_NAME,columns,KEY_ID+"=?",
                 new String[]{String.valueOf(id)},null,null,null,null);
 
         if(cursor != null)
             cursor.moveToFirst();
 
-        return new Note(
+        Note note = new Note(
                 Long.parseLong(cursor.getString(0)),
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getString(3),
                 cursor.getString(4));
+
+        cursor.close();
+        return note;
+
     }
 
     public List<Note> getAllNotes(){
@@ -88,12 +92,12 @@ public class NoteDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query,null);
-        if (cursor != null) {
+        /*if (cursor != null) {
             cursor.moveToFirst();
             do{
                 Note note = new Note();
-                note.setID(Long.parseLong(cursor.getString(0)));
-                //note.setID(cursor.getLong(0));
+                //note.setID(Long.parseLong(cursor.getString(0)));
+                note.setID(cursor.getLong(0));
                 note.setTitle(cursor.getString(1));
                 note.setContent(cursor.getString(2));
                 note.setDate(cursor.getString(3));
@@ -106,7 +110,26 @@ public class NoteDatabase extends SQLiteOpenHelper {
             Log.d("WARNING: " , "NO values in database");
         }
         Log.d("NOTE_size", String.valueOf(allNotes.size()));
+        return allNotes;*/
+
+        if (cursor.moveToFirst()) {
+            do {
+                Note note = new Note();
+                note.setID(Long.parseLong(cursor.getString(0)));
+                //note.setID(cursor.getLong(0));
+                note.setTitle(cursor.getString(1));
+                note.setContent(cursor.getString(2));
+                note.setDate(cursor.getString(3));
+                note.setTime(cursor.getString(4));
+
+                allNotes.add(note);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        Log.d("notes", String.valueOf(allNotes.size()));
         return allNotes;
+
+
     }
 
     public int editNote(Note note){

@@ -44,7 +44,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:padding="3dp"
-                    tools:srcCompat="@drawable/leave" />
+                    tools:srcCompat="@drawable/leaf" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

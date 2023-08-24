@@ -36,7 +36,6 @@ class Notes : AppCompatActivity() {
         noItem = findViewById(R.id.noItemText)
         db = NoteDatabase(this)
 
-        var allNotesList : List<Note> = db.allNotes
         recyclerView = findViewById(R.id.listOfNotes)
 
        /* recyclerView.layoutManager = LinearLayoutManager(this)
@@ -44,6 +43,7 @@ class Notes : AppCompatActivity() {
         recyclerView.adapter = adapter
         */
 
+        val allNotesList : List<Note> = db.allNotes
 
         if(allNotesList.isEmpty()){
             noItem.visibility = View.VISIBLE
@@ -69,7 +69,7 @@ class Notes : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.add) {
-            Toast.makeText(this, "Add New Note", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Add New Note", Toast.LENGTH_SHORT).show()
             val intentAdd = Intent(this, AddNote::class.java)
             startActivity(intentAdd)
 

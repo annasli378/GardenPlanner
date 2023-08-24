@@ -25,7 +25,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
     @NonNull
     @Override
-    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = layoutInflater.inflate(R.layout.custom_list_view,viewGroup,false);
         return new ViewHolder(view);
     }
@@ -37,11 +37,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         String  date     = notesList.get(i).getDate();
         String  time     = notesList.get(i).getTime();
         long    ID       = notesList.get(i).getID();
-        //Log.d("date on ", "Date on: "+date);
+
         viewHolder.nTitle.setText(title);
         viewHolder.nDate.setText(date);
         viewHolder.nTime.setText(time);
-        //viewHolder.nID.setText(String.valueOf(notesList.get(i).getID()));
         viewHolder.nID.setText(String.valueOf(ID));
     }
 
